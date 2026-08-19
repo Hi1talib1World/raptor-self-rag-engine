@@ -1,0 +1,26 @@
+[
+  {
+    "id": "eval_001",
+    "query": "What industrial protocols are supported by the manufacturing edge system?",
+    "expected_answer": "MQTT, OPC-UA, and Modbus TCP/RTU.",
+    "ground_truth_sources": ["architecture_guide.md"],
+    "expected_reflection_token": "[Retrieve: YES]",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eval_002",
+    "query": "Compare the security standards between MQTT TLS 1.3 encryption and ISO 27001 zero trust architecture.",
+    "expected_answer": "MQTT uses TLS 1.3 for telemetry transport encryption, while ISO 27001 specifies overall Zero Trust infrastructure compliance.",
+    "ground_truth_sources": ["architecture_guide.md", "security_compliance.txt"],
+    "expected_reflection_token": "[IsSup: FULL]",
+    "difficulty": "complex_multi_hop"
+  },
+  {
+    "id": "eval_003",
+    "query": "What is the enterprise quantum pricing strategy?",
+    "expected_answer": "Insufficient information in the retrieved context.",
+    "ground_truth_sources": [],
+    "expected_reflection_token": "[IsSup: NONE]",
+    "difficulty": "missing_context"
+  }
+]

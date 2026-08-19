@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raptor-self-rag-engine"
+version = "2.0.0"
+description = "Enterprise-grade RAG 2.0 system featuring RAPTOR hierarchical retrieval, Self-RAG reflection tokens, and adaptive model routing."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "RAG 2.0 AI Systems Architect"}
+]
+keywords = ["rag", "raptor", "self-rag", "vector-search", "vllm", "fastapi", "langchain", "llama-index"]
+dependencies = [
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.22.0",
+    "numpy>=1.24.0",
+    "sentence-transformers>=2.2.0",
+    "rank-bm25>=0.2.2"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

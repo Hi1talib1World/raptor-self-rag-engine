@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # 1. Qdrant Vector Database
+  qdrant:
+    image: qdrant/qdrant:v1.9.0
+    container_name: raptor_qdrant_db
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+  # 2. RAPTOR Self-RAG API Gateway
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raptor_api_gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - LLM_PROVIDER=ollama # Options: ollama, vllm, openai, mock
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+
+  # 3. Interactive Web Dashboard UI
+  web-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raptor_web_ui
+    command: python -m src.ui.app
+    ports:
+      - "7860:7860"
+    environment:
+      - API_URL=http://api-gateway:8000
+    depends_on:
+      - api-gateway
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:

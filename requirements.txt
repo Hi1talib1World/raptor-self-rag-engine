@@ -1,0 +1,7 @@
+pydantic>=2.0.0
+fastapi>=0.100.0
+uvicorn>=0.22.0
+numpy>=1.24.0
+sentence-transformers>=2.2.0
+rank-bm25>=0.2.2
+pytest>=7.0.0
