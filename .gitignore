@@ -1,3 +1,12 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.secret
+credentials.json
+
 # Python bytecode & cache
 __pycache__/
 *.py[cod]
@@ -19,6 +28,8 @@ env/
 qdrant_storage/
 data/
 *.log
+*.sqlite
+*.db
 
 # OS generated
 .DS_Store
